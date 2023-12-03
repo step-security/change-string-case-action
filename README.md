@@ -1,6 +1,8 @@
-# Change String Case GitHub Action
+# StepSecurity Maintained `Change String Case` Action
 
-This action accepts any string, and outputs three different versions of that string:
+Forked from [ASzc/change-string-case-action](https://github.com/ASzc/change-string-case-action)
+
+This Action accepts any string, and outputs three different versions of that string:
 
 - lowercase (`XyZzY` -> `xyzzy`)
 - uppercase (`XyZzY` -> `XYZZY`)
