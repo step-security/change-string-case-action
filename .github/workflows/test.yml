@@ -1,0 +1,27 @@
+name: "Test"
+on:
+  pull_request:
+    types:
+      - opened
+      - reopened
+      - synchronize
+
+permissions:
+  contents: read
+
+jobs:
+  main:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Harden Runner
+        uses: step-security/harden-runner@v2
+        with:
+          egress-policy: audit
+
+      - uses: actions/checkout@v3
+      - uses: ./
+        id: string
+        with:
+          string: XyZzY
+      - id: step2
+        run: echo ${{ steps.string.outputs.lowercase }}
