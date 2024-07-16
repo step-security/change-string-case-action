@@ -47,7 +47,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - id: string
-        uses: step-security/change-string-case-action@v1
+        uses: step-security/change-string-case-action@v6
         with:
           string: XyZzY
       - id: step2
