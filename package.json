@@ -10,8 +10,9 @@
   "author": "step-security",
   "license": "ISC",
   "dependencies": {
-    "@actions/core": "^2.0.3",
-    "axios": "^1.6.0"
+    "@actions/core": "^3.0.1",
+    "axios": "^1.18.1",
+    "undici": "^8.7.0"
   },
   "homepage": "https://github.com/step-security/change-string-case-action#readme",
   "repository": {
