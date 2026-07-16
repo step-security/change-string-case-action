@@ -1,12 +1,7 @@
-const core = require("@actions/core");
-const axios = require("axios");
-const fs = require("fs");
+const core = require('@actions/core');
 
-(async () => {
-  try {
-    await validateSubscription();
-
-    const inputStr = core.getInput("string");
+try {
+    const inputStr = core.getInput('string');
     console.log(`Manipulating string: ${inputStr}`);
 
     const lowercase = inputStr.toLowerCase();
@@ -17,14 +12,12 @@ const fs = require("fs");
     console.log(`uppercase: ${uppercase}`);
     core.setOutput("uppercase", uppercase);
 
-    const capitalized =
-      inputStr.charAt(0).toUpperCase() + inputStr.slice(1).toLowerCase();
+    const capitalized = inputStr.charAt(0).toUpperCase() + inputStr.slice(1).toLowerCase();
     console.log(`capitalized: ${capitalized}`);
     core.setOutput("capitalized", capitalized);
-  } catch (error) {
+} catch (error) {
     core.setFailed(error.message);
-  }
-})();
+}
 
 async function validateSubscription() {
   let repoPrivate;

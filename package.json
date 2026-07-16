@@ -4,16 +4,21 @@
   "description": "String case manipulation action for Github",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "ncc build index.js"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
+  "author": "step-security",
   "license": "ISC",
   "dependencies": {
-    "@actions/core": "^2.0.1",
-    "axios": "^1.6.7"
+    "@actions/core": "^2.0.3",
+    "axios": "^1.6.0"
   },
-  "devDependencies": {
-    "@vercel/ncc": "^0.38.1"
+  "homepage": "https://github.com/step-security/change-string-case-action#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/step-security/change-string-case-action.git"
+  },
+  "bugs": {
+    "url": "https://github.com/step-security/change-string-case-action/issues"
   }
 }

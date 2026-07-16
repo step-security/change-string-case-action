@@ -1,8 +1,9 @@
 name: Change String Case
+author: step-security
 description: Make a string lowercase, uppercase, or capitalized
 branding:
-  icon: "shield"
-  color: "green"
+  icon: corner-down-right
+  color: gray-dark
 inputs:
   string:
     description: The input string
@@ -16,4 +17,4 @@ outputs:
     description: The input string, with any alphabetical characters lowercase, except for the first character, which is uppercased
 runs:
   using: node24
-  main: "./dist/index.js"
+  main: index.js
