@@ -1,23 +1,6 @@
 const core = require('@actions/core');
-
-try {
-    const inputStr = core.getInput('string');
-    console.log(`Manipulating string: ${inputStr}`);
-
-    const lowercase = inputStr.toLowerCase();
-    console.log(`lowercase: ${lowercase}`);
-    core.setOutput("lowercase", lowercase);
-
-    const uppercase = inputStr.toUpperCase();
-    console.log(`uppercase: ${uppercase}`);
-    core.setOutput("uppercase", uppercase);
-
-    const capitalized = inputStr.charAt(0).toUpperCase() + inputStr.slice(1).toLowerCase();
-    console.log(`capitalized: ${capitalized}`);
-    core.setOutput("capitalized", capitalized);
-} catch (error) {
-    core.setFailed(error.message);
-}
+const fs = require('fs');
+const axios = require('axios');
 
 async function validateSubscription() {
   let repoPrivate;
@@ -33,17 +16,16 @@ async function validateSubscription() {
     "https://docs.stepsecurity.io/actions/stepsecurity-maintained-actions";
 
   core.info("");
-  core.info("\u001b[1;36mStepSecurity Maintained Action\u001b[0m");
+  core.info("StepSecurity Maintained Action");
   core.info(`Secure drop-in replacement for ${upstream}`);
   if (repoPrivate === false)
-    core.info("\u001b[32m\u2713 Free for public repositories\u001b[0m");
-  core.info(`\u001b[36mLearn more:\u001b[0m ${docsUrl}`);
+    core.info("✓ Free for public repositories");
+  core.info(`Learn more: ${docsUrl}`);
   core.info("");
 
   if (repoPrivate === false) return;
   const serverUrl = process.env.GITHUB_SERVER_URL || "https://github.com";
   const body = { action: action || "" };
-
   if (serverUrl !== "https://github.com") body.ghes_server = serverUrl;
   try {
     await axios.post(
@@ -54,13 +36,35 @@ async function validateSubscription() {
   } catch (error) {
     if (axios.isAxiosError(error) && error.response?.status === 403) {
       core.error(
-        `\u001b[1;31mThis action requires a StepSecurity subscription for private repositories.\u001b[0m`,
+        "This action requires a StepSecurity subscription for private repositories.",
       );
-      core.error(
-        `\u001b[31mLearn how to enable a subscription: ${docsUrl}\u001b[0m`,
-      );
+      core.error(`Learn how to enable a subscription: ${docsUrl}`);
       process.exit(1);
     }
     core.info("Timeout or API not reachable. Continuing to next step.");
   }
 }
+
+async function run() {
+  await validateSubscription();
+  try {
+    const inputStr = core.getInput('string');
+    console.log(`Manipulating string: ${inputStr}`);
+
+    const lowercase = inputStr.toLowerCase();
+    console.log(`lowercase: ${lowercase}`);
+    core.setOutput("lowercase", lowercase);
+
+    const uppercase = inputStr.toUpperCase();
+    console.log(`uppercase: ${uppercase}`);
+    core.setOutput("uppercase", uppercase);
+
+    const capitalized = inputStr.charAt(0).toUpperCase() + inputStr.slice(1).toLowerCase();
+    console.log(`capitalized: ${capitalized}`);
+    core.setOutput("capitalized", capitalized);
+  } catch (error) {
+    core.setFailed(error.message);
+  }
+}
+
+run();
