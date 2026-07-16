@@ -17,4 +17,4 @@ outputs:
     description: The input string, with any alphabetical characters lowercase, except for the first character, which is uppercased
 runs:
   using: node24
-  main: index.js
+  main: dist/index.js
