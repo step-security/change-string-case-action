@@ -1,10 +1,8 @@
 [![StepSecurity Maintained Action](https://raw.githubusercontent.com/step-security/maintained-actions-assets/main/assets/maintained-action-banner.png)](https://docs.stepsecurity.io/actions/stepsecurity-maintained-actions)
 
-# StepSecurity Maintained `Change String Case` Action
+# Change String Case GitHub Action
 
-Forked from [ASzc/change-string-case-action](https://github.com/ASzc/change-string-case-action)
-
-This Action accepts any string, and outputs three different versions of that string:
+This action accepts any string, and outputs three different versions of that string:
 
 - lowercase (`XyZzY` -> `xyzzy`)
 - uppercase (`XyZzY` -> `XYZZY`)
@@ -49,7 +47,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - id: string
-        uses: step-security/change-string-case-action@v6
+        uses: step-security/change-string-case-action@v7
         with:
           string: XyZzY
       - id: step2
