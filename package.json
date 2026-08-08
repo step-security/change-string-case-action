@@ -10,10 +10,10 @@
   "keywords": [],
   "license": "ISC",
   "dependencies": {
-    "@actions/core": "^2.0.1",
-    "axios": "^1.6.7"
+    "@actions/core": "^2.0.3",
+    "axios": "^1.19.0"
   },
   "devDependencies": {
-    "@vercel/ncc": "^0.38.1"
+    "@vercel/ncc": "^0.44.1"
   }
 }
