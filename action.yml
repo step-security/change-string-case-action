@@ -1,4 +1,5 @@
 name: Change String Case
+author: 'step-security'
 description: Make a string lowercase, uppercase, or capitalized
 branding:
   icon: "shield"
